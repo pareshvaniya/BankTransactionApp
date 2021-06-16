@@ -1,0 +1,82 @@
+
+<h4 style="text-align: center;">Loan Details</h4>
+<div class="card text-center" style="padding-left: 250px;">
+  <div class="card-body pb-0" style="text-align: center;width: 90%;padding-top: 40px;">
+
+    <div class="row">
+      <div class="col-12 col-md-12">
+        <div class="card">
+
+          <div class="card-body position-relative">
+            <div class="table-responsive cnstr-record product-tbl">
+              <table class="table table-bordered heading-hvr" style="text-align: center;width: 90%;">
+                <thead>
+                  <tr>
+                    <th> </th>
+                    <th width="50">Loan ID
+                    </th>
+                    <th>Sender</th>
+                    <th>Receiver</th>
+                    <th>Total Amount</th>
+                    <th>Total Paid Amount</th>
+                   </tr>
+                </thead>
+
+                <tbody *ngFor="let loan of loanDetails; let i = index">
+
+                  <tr>
+                    <td align="center">
+                      <a class="expand-row" *ngIf="!hideme[i]" (click)="showinstalmentDetails(i,loan.id)">
+                        <img src="../../assets/Images/plus.png" />
+
+                      </a>
+                      <a class="expand-row" *ngIf="hideme[i]" (click)="hideme[i] = !hideme[i]">
+                        <img src="../../assets/Images/minus.png" />
+                      </a>
+                    </td>
+                    <td align="center">{{loan.id}}</td>
+                    <td>{{loan.senderName}}</td>
+                    <td>{{loan.receiverName }}</td>
+                    <td>{{loan.totalAmount}}</td>
+                    <td>{{loan.totalPaidAmount}}</td>
+                  </tr>
+
+                  <!-- <div id="myresult" class="img-zoom-result"></div> -->
+                  <tr [hidden]="!hideme[i]" class="sub-table no-bg">
+                    <td align="center"> </td>
+                    <td colspan="15" class="p-0">
+                      <table class="table mb-0 table-striped">
+                        <thead class="bg-dark text-white">
+                          <tr>
+                            <th>Instalment ID</th>
+                            <th>Sender</th>
+                            <th>Receiver</th>
+                            <th>Total Amount</th>
+                            <th>Paid Amount</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let intalment of instalmentdeatils[i]">
+                            <td>{{intalment.id}}</td>
+                            <td>{{intalment.senderName}}</td>
+                            <td>{{intalment.receiverName}}</td>
+                            <td>{{intalment.totalAmount}}</td>
+                            <td>{{intalment.paidAmount}}</td>
+
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
